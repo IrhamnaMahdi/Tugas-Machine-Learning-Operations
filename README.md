@@ -74,6 +74,17 @@ Setelah training, model dievaluasi menggunakan metrik utama berupa **accuracy** 
 ### 5. Model Versioning
 Model yang telah dilatih disimpan dalam format .keras dengan nama bird_species_model_final.keras. Penyimpanan ini memungkinkan pelacakan versi model hasil eksperimen yang berbeda. Informasi label kelas juga disimpan secara terpisah dalam file class_indices.json, sehingga konsistensi antara model dan label tetap terjaga saat deployment maupun retraining.
 
+### 6. Model Deployment
+Model dideploy ke lingkungan production dalam bentuk aplikasi web berbasis **Streamlit** (tubes_mlops.py). Pada tahap ini, model dapat diakses oleh pengguna akhir melalui antarmuka web, di mana pengguna dapat mengunggah gambar burung dan memperoleh hasil prediksi spesies secara real-time beserta confidence score-nya.
+
+
+### 7.Model Monitoring
+Monitoring performa model dilakukan dengan mengamati confidence score dan distribusi probabilitas prediksi setiap kelas yang divisualisasikan dalam bentuk grafik. Pendekatan ini membantu mendeteksi potensi penurunan performa model atau indikasi perubahan karakteristik data (data drift).
+
+
+### 8. Model Retraining
+Sistem dirancang agar model dapat dengan mudah dilatih ulang (retraining) ketika tersedia data baru. Dengan menambahkan dataset baru ke tahap ingestion dan menjalankan kembali pipeline training, model dapat diperbarui untuk meningkatkan akurasi dan menjaga relevansi performa. Tahap ini mendukung konsep continuous improvement dalam pipeline MLOps.
+
 
 
 ## Cara Menjalankan Proyek
