@@ -62,7 +62,7 @@ Tahap data ingestion dilakukan dengan mengumpulkan dataset citra burung dari sum
 Pada tahap preprocessing, data citra dipersiapkan agar sesuai dengan kebutuhan model deep learning. Proses yang dilakukan meliputi:
 - Resize gambar ke ukuran 224×224 piksel agar kompatibel dengan input MobileNetV2.
 - Normalisasi nilai piksel ke rentang 0–1 untuk mempercepat konvergensi model.
-- Encoding label kelas dan penyimpanan mapping label ke dalam file class_indices.json.
+- Encoding label kelas dan penyimpanan mapping label ke dalam file `class_indices.json.`
 - Pembagian data menjadi data **training** dan **validation** untuk memastikan evaluasi model yang objektif.
 
 ### 3. Model Training
@@ -72,10 +72,10 @@ Tahap training dilakukan menggunakan arsitektur **MobileNetV2** dengan pendekata
 Setelah training, model dievaluasi menggunakan metrik utama berupa **accuracy** pada data validation. Selain itu, dilakukan analisis confidence prediction untuk melihat seberapa yakin model dalam memprediksi setiap kelas. Hasil evaluasi ini menjadi dasar untuk menentukan apakah model sudah layak dideploy atau perlu dilakukan penyesuaian lebih lanjut.
 
 ### 5. Model Versioning
-Model yang telah dilatih disimpan dalam format .keras dengan nama bird_species_model_final.keras. Penyimpanan ini memungkinkan pelacakan versi model hasil eksperimen yang berbeda. Informasi label kelas juga disimpan secara terpisah dalam file class_indices.json, sehingga konsistensi antara model dan label tetap terjaga saat deployment maupun retraining.
+Model yang telah dilatih disimpan dalam format `.keras` dengan nama `bird_species_model_final.keras`. Penyimpanan ini memungkinkan pelacakan versi model hasil eksperimen yang berbeda. Informasi label kelas juga disimpan secara terpisah dalam file `class_indices.json`, sehingga konsistensi antara model dan label tetap terjaga saat deployment maupun retraining.
 
 ### 6. Model Deployment
-Model dideploy ke lingkungan production dalam bentuk aplikasi web berbasis **Streamlit** (tubes_mlops.py). Pada tahap ini, model dapat diakses oleh pengguna akhir melalui antarmuka web, di mana pengguna dapat mengunggah gambar burung dan memperoleh hasil prediksi spesies secara real-time beserta confidence score-nya.
+Model dideploy ke lingkungan production dalam bentuk aplikasi web berbasis **Streamlit** (`tubes_mlops.py`). Pada tahap ini, model dapat diakses oleh pengguna akhir melalui antarmuka web, di mana pengguna dapat mengunggah gambar burung dan memperoleh hasil prediksi spesies secara real-time beserta confidence score-nya.
 
 
 ### 7.Model Monitoring
