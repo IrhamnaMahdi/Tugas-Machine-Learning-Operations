@@ -58,6 +58,23 @@ Setiap folder merepresentasikan satu kelas / spesies burung.
 ### 1. Data Ingestion
 Tahap data ingestion dilakukan dengan mengumpulkan dataset citra burung dari sumber eksternal, seperti dataset publik (misalnya Kaggle). Dataset ini terdiri dari beberapa kelas spesies burung yang kemudian disusun dalam struktur folder berdasarkan label kelas. Proses ini menjadi fondasi awal pipeline MLOps karena kualitas dan konsistensi data sangat memengaruhi performa model di tahap selanjutnya.
 
+### 2. Data Preprocessing
+Pada tahap preprocessing, data citra dipersiapkan agar sesuai dengan kebutuhan model deep learning. Proses yang dilakukan meliputi:
+- Resize gambar ke ukuran 224×224 piksel agar kompatibel dengan input MobileNetV2.
+- Normalisasi nilai piksel ke rentang 0–1 untuk mempercepat konvergensi model.
+- Encoding label kelas dan penyimpanan mapping label ke dalam file class_indices.json.
+- Pembagian data menjadi data **training** dan **validation** untuk memastikan evaluasi model yang objektif.
+
+### 3. Model Training
+Tahap training dilakukan menggunakan arsitektur **MobileNetV2** dengan pendekatan **Transfer Learning**. Model pretrained dari ImageNet digunakan sebagai feature extractor, kemudian dilakukan fine-tuning pada beberapa layer akhir menggunakan dataset spesies burung. Framework yang digunakan adalah **TensorFlow/Keras**, sehingga proses training dapat dilakukan secara efisien dan terstandarisasi.
+
+### 4. Model Evaluation
+Setelah training, model dievaluasi menggunakan metrik utama berupa **accuracy** pada data validation. Selain itu, dilakukan analisis confidence prediction untuk melihat seberapa yakin model dalam memprediksi setiap kelas. Hasil evaluasi ini menjadi dasar untuk menentukan apakah model sudah layak dideploy atau perlu dilakukan penyesuaian lebih lanjut.
+
+### 5. Model Versioning
+Model yang telah dilatih disimpan dalam format .keras dengan nama bird_species_model_final.keras. Penyimpanan ini memungkinkan pelacakan versi model hasil eksperimen yang berbeda. Informasi label kelas juga disimpan secara terpisah dalam file class_indices.json, sehingga konsistensi antara model dan label tetap terjaga saat deployment maupun retraining.
+
+
 
 ## Cara Menjalankan Proyek
 
