@@ -94,3 +94,37 @@ NumPy
 Pillow (PIL)
 Matplotlib
 ```
+
+## Evaluasi Model
+
+Model dievaluasi menggunakan dataset validasi (20% split) selama 30 epoch untuk fase *feature extraction* dan dilanjutkan dengan 15 epoch untuk fase *fine-tuning*. Berikut adalah ringkasan performa model:
+
+### 1. Metrik Performa Akhir
+Berdasarkan hasil training terakhir (Fine-Tuning Epoch 5/15), model mencapai performa sebagai berikut:
+
+| Metrik | Training Set | Validation Set |
+| :--- | :--- | :--- |
+| **Accuracy** | 98.69% | 94.59% |
+| **Loss** | 0.0437 | 0.2898 |
+
+### 2. Analisis Proses Training
+Proses pelatihan dilakukan dalam dua tahap strategi *Transfer Learning*:
+
+* **Fase 1: Feature Extraction (Frozen Base)**
+    * Model dilatih dengan *base model* MobileNetV2 yang dibekukan (*frozen*).
+    * Akurasi validasi mencapai **94.59%** pada Epoch ke-13, menunjukkan bahwa model pre-trained ImageNet sudah memiliki ekstraksi fitur yang sangat baik untuk mengenali pola burung.
+    * Model menggunakan `Dropout(0.5)` untuk mencegah *overfitting* yang signifikan.
+
+* **Fase 2: Fine-Tuning**
+    * Melakukan *unfreeze* pada 30% layer teratas dari MobileNetV2.
+    * Dilatih kembali dengan *learning rate* yang sangat kecil (`1e-4` turun ke `3e-5`) untuk menyesuaikan bobot secara spesifik terhadap dataset spesies burung.
+    * Hasil akhirnya menunjukkan model sangat *robust* dengan akurasi training mendekati 99% dan validasi yang stabil di angka ~94-95%.
+
+### 3. Konfigurasi Hyperparameter
+* **Optimizer**: Adam
+* **Learning Rate**: 
+    * *Base Training*: 1e-3
+    * *Fine Tuning*: 1e-4 (dengan ReduceLROnPlateau)
+* **Loss Function**: Categorical Crossentropy
+* **Batch Size**: 16
+* **Image Size**: 224 x 224 pixel
