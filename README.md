@@ -19,12 +19,11 @@ Pengguna dapat mengunggah gambar burung dan sistem akan memprediksi spesies buru
 
 ## Struktur Proyek
 
----
-├── tubes_mlops.py # Aplikasi Streamlit
-├── MLOps.ipnyb # Script training model
-├── README.md # Dokumentasi proyek
-└── requirements.txt # Dependensi Python
----
+1. tubes_mlops.py # Aplikasi Streamlit
+2. MLOps.ipnyb # Script training model
+3. class_indices.json # Class label mapping
+4. README.md # Dokumentasi proyek
+5. requirements.txt # Dependensi Python
 
 ## Dataset
 
@@ -35,10 +34,10 @@ Pengguna dapat mengunggah gambar burung dan sistem akan memprediksi spesies buru
 Contoh struktur dataset:
 ---
 Birds dataset/
-├── green_parrot/
-├── gray_parrot/
-├── macaw/
-└── white_parrot/
+- green_parrot/
+- gray_parrot/
+- macaw/
+- white_parrot/
 ---
 
 Setiap folder merepresentasikan satu kelas / spesies burung.
