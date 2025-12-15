@@ -54,6 +54,11 @@ Setiap folder merepresentasikan satu kelas / spesies burung.
 
 ---
 
+## Arsitektur Sistem MLOps
+### 1. Data Ingestion
+Tahap data ingestion dilakukan dengan mengumpulkan dataset citra burung dari sumber eksternal, seperti dataset publik (misalnya Kaggle). Dataset ini terdiri dari beberapa kelas spesies burung yang kemudian disusun dalam struktur folder berdasarkan label kelas. Proses ini menjadi fondasi awal pipeline MLOps karena kualitas dan konsistensi data sangat memengaruhi performa model di tahap selanjutnya.
+
+
 ## Cara Menjalankan Proyek
 
 ### 1. Clone Repository
