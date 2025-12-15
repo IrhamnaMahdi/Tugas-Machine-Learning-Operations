@@ -34,10 +34,10 @@ Pengguna dapat mengunggah gambar burung dan sistem akan memprediksi spesies buru
 Contoh struktur dataset:
 ---
 Birds dataset/
-- green_parrot/
-- gray_parrot/
+- amazon green parrot/
+- gray parrot/
 - macaw/
-- white_parrot/
+- white parrot/
 ---
 
 Setiap folder merepresentasikan satu kelas / spesies burung.
