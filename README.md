@@ -77,6 +77,18 @@ Model yang telah dilatih disimpan dalam format `.keras` dengan nama `bird_specie
 ### 6. Model Deployment
 Model dideploy ke lingkungan production dalam bentuk aplikasi web berbasis **Streamlit** (`tubes_mlops.py`). Pada tahap ini, model dapat diakses oleh pengguna akhir melalui antarmuka web, di mana pengguna dapat mengunggah gambar burung dan memperoleh hasil prediksi spesies secara real-time beserta confidence score-nya.
 
+### 7. Model Inference
+Setelah model dideploy, proses inferensi dilakukan dengan alur sebagai berikut:
+
+* Pengguna mengunggah gambar burung melalui antarmuka aplikasi Streamlit.
+* Sistem melakukan validasi format file (JPG/PNG).
+* Gambar di-resize ke ukuran 224×224 piksel dan dinormalisasi.
+* Model MobileNetV2 yang telah dilatih memproses gambar tersebut.
+* Model menghasilkan probabilitas prediksi untuk setiap kelas spesies burung.
+* Sistem menampilkan:
+   * Prediksi spesies utama
+   * Confidence score
+   * Visualisasi distribusi probabilitas kelas
 
 ### 7.Model Monitoring
 Monitoring performa model dilakukan dengan mengamati confidence score dan distribusi probabilitas prediksi setiap kelas yang divisualisasikan dalam bentuk grafik. Pendekatan ini membantu mendeteksi potensi penurunan performa model atau indikasi perubahan karakteristik data (data drift).
